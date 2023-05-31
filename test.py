@@ -12,7 +12,7 @@ config = TestOptions().parse()
 if os.path.isfile(config.dataset_path):
     pathfile = open(config.dataset_path, 'rt').read().splitlines()
     filenames = [x for x in pathfile]
-    pathfile = [os.path.join(r"D:\RESFES2023\model\DMFN\yesuredata\test", x) for x in pathfile]
+    pathfile = [os.path.join(r"yesuredata\test", x) for x in pathfile]
 elif os.path.isdir(config.dataset_path):
     pathfile = glob.glob(os.path.join(config.dataset_path, '*.png'))
 else:

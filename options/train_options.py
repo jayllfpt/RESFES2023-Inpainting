@@ -10,10 +10,10 @@ class TrainOptions:
 
     def initialize(self):
         # experiment specifics
-        self.parser.add_argument('--dataset', type=str, default='yesuredata',
+        self.parser.add_argument('--dataset', type=str, default='./yesuredata',
                                  help='dataset of the experiment.')
-        self.parser.add_argument('--dataset_path', type=str, default='', help='the file storing training image paths')
-        self.parser.add_argument('--data_file', type=str, default='', help='the file storing training image paths')
+        self.parser.add_argument('--dataset_path', type=str, default='./yesuredata/train', help='the file storing training image paths')
+        self.parser.add_argument('--data_file', type=str, default='./yesuretxt/train.txt', help='the file storing training image paths')
         self.parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2')
         self.parser.add_argument('--checkpoint_dir', type=str, default='./checkpoints', help='models are saved here')
         self.parser.add_argument('--load_model_dir', type=str, default='', help='pretrained models are given here')
