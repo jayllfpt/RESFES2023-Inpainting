@@ -64,8 +64,8 @@ class TestOptions:
         self.opt.model_folder += '_randmask-' + self.opt.mask_type if self.opt.random_mask else ''
         if self.opt.random_mask:
             self.opt.model_folder += '_seed-' + str(self.opt.seed)
-        self.opt.saving_path = os.path.join(self.opt.test_dir, self.opt.model_folder)
-
+        # self.opt.saving_path = os.path.join(self.opt.test_dir, self.opt.model_folder)
+        self.opt.saving_path = './yesureresult'
         if os.path.exists(self.opt.saving_path) is False and self.opt.mode == 'save':
             os.mkdir(self.opt.saving_path)
 

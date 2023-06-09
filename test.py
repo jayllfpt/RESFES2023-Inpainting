@@ -12,7 +12,7 @@ config = TestOptions().parse()
 if os.path.isfile(config.dataset_path):
     pathfile = open(config.dataset_path, 'rt').read().splitlines()
     filenames = [x for x in pathfile]
-    pathfile = [os.path.join(r"yesuredata\test", x) for x in pathfile]
+    pathfile = [os.path.join(config.dataset_path, x) for x in pathfile]
 elif os.path.isdir(config.dataset_path):
     pathfile = glob.glob(os.path.join(config.dataset_path, '*.png'))
 else:
@@ -28,7 +28,7 @@ ourModel.print_networks()
 if config.load_model_dir != '':
     print('Loading pretrained model from {}'.format(config.load_model_dir))
     # ourModel.load_networks(getLatest(os.path.join(config.load_model_dir, '*.pth')))
-    ourModel.load_networks(r"checkpoints\yesure\40_net_DFBN.pth")
+    ourModel.load_networks(config.load_model_dir)
     print('Loading done.')
 
 if config.random_mask:
@@ -41,7 +41,7 @@ for i in range(test_num):
         mask = generate_stroke_mask(im_size=(config.img_shapes[0], config.img_shapes[1]),
                                     parts=8, maxBrushWidth=20, maxLength=100, maxVertex=20)
     image = cv2.imread(pathfile[i])
-    cv2.imwrite(r"yesureresult/" + filenames[i][:-4] + "_a.jpg", image)
+    cv2.imwrite(config.saving_path + filenames[i][:-4] + "_a.jpg", image)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     h, w = image.shape[:2]
 
@@ -58,7 +58,7 @@ for i in range(test_num):
     image = np.expand_dims(image, axis=0)
     image_vis = image * (1 - mask) + 255 * mask
     image_vis = np.transpose(image_vis[0][::-1, :, :], [1, 2, 0])
-    cv2.imwrite(r"yesureresult/" + filenames[i][:-4] + "_b.jpg", image_vis.astype(np.uint8))
+    cv2.imwrite(config.saving_path + filenames[i][:-4] + "_b.jpg", image_vis.astype(np.uint8))
 
     h, w = image.shape[2:]
     grid = 4
@@ -66,6 +66,6 @@ for i in range(test_num):
     mask = mask[:, :, :h // grid * grid, :w // grid * grid]
     result = ourModel.evaluate(image, mask)
     result = np.transpose(result[0][::-1, :, :], [1, 2, 0])
-    cv2.imwrite(r"yesureresult/" + filenames[i][:-4] + "_c.jpg", result)
+    cv2.imwrite(config.saving_path + filenames[i][:-4] + "_c.jpg", result)
     print(' > {} / {}'.format(i + 1, test_num))
 print('done.')
