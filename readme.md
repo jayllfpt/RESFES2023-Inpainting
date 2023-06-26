@@ -38,7 +38,8 @@ Note that the following result maybe not as good as the paper because **they are
 </p>
 
 ## Prepair the dataset
-folder yesuredata
+<br>See more details in the paper.</br>
+![Ye-Sure's Paper]([https://github.com/jayllfpt/CVPong1972/blob/main/demo.gif](https://github.com/jayllfpt/RESFES2023-Inpainting/blob/main/Full_paper_HCMU.pdf))
 
 ## How to test
 
