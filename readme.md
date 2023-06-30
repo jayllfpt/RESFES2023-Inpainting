@@ -46,14 +46,14 @@ Note that the following result maybe not as good as the paper because **they are
 You can specify the folder address by the option --dataset_path, and set the pretrained model path by --load_model_dir when calling test.py as the following
 
 ```
-python test.py ---dataset_path celeba_data --data_file img_align_celeba_png\test.txt --load_model_dir pretrained/1epoch
+python test.py 
 ```
 **We train it 40 epochs with single GPU**, you can train it yourself for better performance or in custom dataset.
 
 ## How to train
 Use train.py as the following 
 ```
-python train.py ---dataset_path celeba_data --data_file img_align_celeba_png\test.txt --batch_size 8 --lr 2e-4
+python train.py --dataset_path yesuredata/train --data_file yesuretxt/train.txt --batch_size 4 --lr 2e-4
 ```
 You can load the pretrained model by the option --load_model_dir too.
 
