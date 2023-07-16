@@ -12,19 +12,21 @@ config = TestOptions().parse()
 if os.path.isfile(config.dataset_path):
     pathfile = open(config.dataset_path, 'rt').read().splitlines()
     filenames = [x for x in pathfile]
-    pathfile = [os.path.join(config.dataset_path, x) for x in pathfile]
+    pathfile = [os.path.join(config.dataset, x) for x in pathfile]
 elif os.path.isdir(config.dataset_path):
+    pathfile = glob.glob(os.path.join(config.dataset_path, '*.jpg'))
     pathfile = glob.glob(os.path.join(config.dataset_path, '*.png'))
 else:
     print('Invalid testing data file/folder path.')
     exit(1)
+
 total_number = len(pathfile)
 test_num = total_number if config.test_num == -1 else min(total_number, config.test_num)
 print('The total number of testing images is {}, and we take {} for test.'.format(total_number, test_num))
 
 print('configuring model..')
 ourModel = InpaintingModel_DFBM(opt=config)
-ourModel.print_networks()
+# ourModel.print_networks()
 if config.load_model_dir != '':
     print('Loading pretrained model from {}'.format(config.load_model_dir))
     # ourModel.load_networks(getLatest(os.path.join(config.load_model_dir, '*.pth')))
@@ -34,6 +36,7 @@ if config.load_model_dir != '':
 if config.random_mask:
     np.random.seed(config.seed)
 
+print(test_num)
 for i in range(test_num):
     if config.mask_type == 'rect':
         mask, _ = generate_rect_mask(config.img_shapes, config.mask_shapes, config.random_mask)

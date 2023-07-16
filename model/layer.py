@@ -147,8 +147,8 @@ class VGG19FeatLayer(nn.Module):
     def __init__(self):
         super(VGG19FeatLayer, self).__init__()
         vgg = models.vgg19(pretrained=False)
-        state_dict = torch.load(r"checkpoints\yesure\40_net_DFBN.pth")
-        vgg.load_state_dict(state_dict)
+        # state_dict = torch.load(r"checkpoints\yesure\40_net_DFBN.pth")
+        # vgg.load_state_dict(state_dict)
         self.vgg19 = vgg.features.eval().cuda()
         self.mean = torch.tensor([0.485, 0.456, 0.406]).view(1, 3, 1, 1).cuda()
 

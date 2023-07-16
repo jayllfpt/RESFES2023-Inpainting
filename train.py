@@ -25,7 +25,8 @@ if __name__ == '__main__':
     ourModel.print_networks()
     if config.load_model_dir != '':
         print('Loading pretrained model from {}'.format(config.load_model_dir))
-        ourModel.load_networks(getLatest(os.path.join(config.load_model_dir, '*.pth')))
+        # ourModel.load_networks(getLatest(os.path.join(config.load_model_dir, '*.pth')))
+        ourModel.load_networks(config.load_model_dir)
         print('Loading done.')
     # ourModel = torch.nn.DataParallel(ourModel).cuda()
     print('model setting up..')

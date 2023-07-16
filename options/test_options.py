@@ -8,10 +8,10 @@ class TestOptions:
         self.initialized = False
 
     def initialize(self):
-        self.parser.add_argument('--dataset', type=str, default='yesuredata',
+        self.parser.add_argument('--dataset', type=str, default='./test1/img',
                                  help='The dataset of the experiment.')
-        self.parser.add_argument('--data_file', type=str, default='./yesuretxt/test.txt', help='the file storing testing file paths')
-        self.parser.add_argument('--test_dir', type=str, default='./yesureresult', help='models are saved here')
+        self.parser.add_argument('--data_file', type=str, default='./test1/test1.txt', help='the file storing testing file paths')
+        self.parser.add_argument('--test_dir', type=str, default='./yesureresult1/', help='result are saved here')
         self.parser.add_argument('--load_model_dir', type=str, default='./checkpoints/yesure/40_net_DFBN.pth', help='pretrained models are given here')
         self.parser.add_argument('--seed', type=int, default=1, help='random seed')
         self.parser.add_argument('--gpu_ids', type=str, default='0')
@@ -64,8 +64,8 @@ class TestOptions:
         self.opt.model_folder += '_randmask-' + self.opt.mask_type if self.opt.random_mask else ''
         if self.opt.random_mask:
             self.opt.model_folder += '_seed-' + str(self.opt.seed)
-        # self.opt.saving_path = os.path.join(self.opt.test_dir, self.opt.model_folder)
-        self.opt.saving_path = './yesureresult'
+        # self.opt.saving_path = os.path.join(, self.opt.model_folder)
+        self.opt.saving_path = self.opt.test_dir
         if os.path.exists(self.opt.saving_path) is False and self.opt.mode == 'save':
             os.mkdir(self.opt.saving_path)
 
