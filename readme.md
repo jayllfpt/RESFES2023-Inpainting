@@ -16,15 +16,15 @@ This is an unoffical repository for reproducing model DMFN from the paper [[Imag
 
 
 ## RESULT
-Note that the following result maybe not as good as the paper because **they are trained only in 1 epoch**. You can get the final result in original author's github. 
-### train
+
+### Dataset
 <p align="center">
   <img src="imgs/image9.png">
   <img src="imgs/image11.png">
 
 </p>
 
-### test
+### Result
 <p align="center">
   <img src="imgs/image14.png">
   <img src="imgs/image8.png">
@@ -37,8 +37,8 @@ Note that the following result maybe not as good as the paper because **they are
   <img src="imgs/loss_curve.png">
 </p>
 
-## Prepair the dataset
-folder yesuredata
+## Prepair the dataset images
+contact us: yesure2023@gmail.com
 
 ## How to test
 
@@ -47,14 +47,14 @@ You can specify the folder address by the option --dataset_path, and set the pre
 ```
 python test.py --dataset yesuredata/test --data_file yesuretxt/test.txt --load_model_dir checkpoints/40_net_DFBN.pth
 ```
-**We train it 40 epochs with single GPU**, you can train it yourself for better performance or in custom dataset.
+**We train it 40 epochs with single GPU - GTX 1650**, you can train it yourself for better performance or in custom dataset.
 
 ## How to train
 Use train.py as the following 
 ```
 python train.py --dataset_path data_final --data_file yesuretxt/train1.txt --batch_size 4 --lr 2e-4 --epochs 40 --load_model_dir checkpoints/40_net_DFBN.pth
 ```
-You can load the pretrained model by the option --load_model_dir too.
+You can load the pretrained model by the option --load_model_dir and edit default params in 2 python files in 'options' folder, too.
 
 ## Refs
 
