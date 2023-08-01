@@ -30,11 +30,9 @@ This is an unoffical repository for reproducing model DMFN from the paper [[Imag
   <img src="imgs/image8.png">
   <img src="imgs/image10.png">
   <img src="imgs/image16.png">
-</p>
-
-### loss
-<p align="center">
-  <img src="imgs/loss_curve.png">
+  <img src="imgs/res1.png">
+  <img src="imgs/res2.png">
+  <img src="imgs/res3.png">
 </p>
 
 ## Prepair the dataset images
