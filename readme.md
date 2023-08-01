@@ -15,8 +15,6 @@ This is an unoffical repository for reproducing model DMFN from the paper [[Imag
 - tensorboardX
 
 
-## RESULT
-
 ### Dataset
 <p align="center">
   <img src="imgs/image9.png">
